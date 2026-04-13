@@ -17,3 +17,17 @@
 # Receive Output/Log/Printables from General and Planner
 
     # Show the Output/Log/Printables to the user
+
+from input.cli import display_result, get_cli_input
+from orchestration.intent import route_input
+
+
+def main() -> tuple[str, int, str]:
+    prompt = get_cli_input()
+    agent_name, flag, output = route_input(prompt)
+    display_result(agent_name, flag, output)
+    return agent_name, flag, output
+
+
+if __name__ == "__main__":
+    main()
